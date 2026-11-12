@@ -1,6 +1,7 @@
 import Enums.Zona;
 import Exceptions.DespachoException;
 import Modelo.*;
+import ClaseUtilitaria.Calculos;
 
 import java.security.spec.RSAOtherPrimeInfo;
 
@@ -40,7 +41,8 @@ public class Main {
 
 
             System.out.println("Despacho: " + despacho1.getCodigo() + '-' + despacho1.getMensajero().getNombre());
-            System.out.println(p1.getGuia());
+            System.out.println(p1.getGuia() + s1.getNombre() + p1.getPeso() + Calculos.calcular_envio_base(p1));
+
 
 
 
@@ -54,6 +56,17 @@ public class Main {
 
         //CASO 2 ===================================================================================================:
         System.out.println("Caso 2: ------------------------------------");
+        try{
+            Paquete p1 = new Paquete(-2,"3001", Zona.CENTRO);
+            Paquete p2 = new Paquete(2,"3002", Zona.NORTE);
+            Paquete p3 = new Paquete(3,"12A4", Zona.SUR);
+            Paquete p4 = new Paquete(22,"3003", Zona.NORTE);
+        } catch (DespachoException e){
+            System.out.println(e.getMessage());
+        }
+
+
+
 
         //CASO 3 ===================================================================================================:
         System.out.println("Caso 3: ------------------------------------");
